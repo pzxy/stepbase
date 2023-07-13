@@ -1,0 +1,27 @@
+package @{COMPANYNAME}.@{PACKAGENAME}.controller.@{SIMPLEENTITYNAME};
+
+import com.base.core.head.ao.PageAO;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import com.gitee.magic.core.valid.annotation.number.LongValid;
+
+/**
+ * @author @{AUTHOR} 
+ * @date @{DATE}
+ */
+@Getter@Setter@ToString
+public class @{ENTITYNAME}PageAO extends PageAO {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@Schema(title="@{SIMPLEENTITYNAME}Id")
+	@LongValid
+	private Long id;
+
+}

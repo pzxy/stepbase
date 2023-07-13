@@ -1,0 +1,12 @@
+package @{COMPANYNAME}.@{PACKAGENAME}.dao;
+
+import com.base.core.framework.sql.dao.@{DAOTYPE}BaseDao;
+import @{COMPANYNAME}.@{PACKAGENAME}.entity.@{ENTITYNAME}DO;
+
+/**
+ * @author @{AUTHOR} 
+ * @date @{DATE}
+ */
+public interface @{ENTITYNAME}Dao extends @{DAOTYPE}BaseDao<@{ENTITYNAME}DO,Long> {
+
+}

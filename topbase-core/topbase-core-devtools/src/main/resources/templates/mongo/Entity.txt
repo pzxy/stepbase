@@ -1,0 +1,14 @@
+package @{COMPANYNAME}.@{PACKAGENAME}.entity;
+
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.base.core.framework.mongo.entity.MongoBase;
+
+/**
+ * @author @{AUTHOR} 
+ * @date @{DATE}
+ */
+@Document(collection = "@{TABEXTESION}_@{UENTITYNAME}")
+public class @{ENTITYNAME} extends MongoBase {
+	
+}

@@ -1,0 +1,59 @@
+		public Criteria and@{MFIELDNAME}IsNull() {
+			addCriterion("@{TABLEFIELDNAME} is null");
+			return (Criteria) this;
+		}
+		
+		public Criteria and@{MFIELDNAME}IsNotNull() {
+			addCriterion("@{TABLEFIELDNAME} is not null");
+			return (Criteria) this;
+		}
+		
+		public Criteria and@{MFIELDNAME}EqualTo(@{DATETYPE} value) {
+			addCriterion("@{TABLEFIELDNAME} =", value, "@{FIELDNAME}");
+			return (Criteria) this;
+		}
+		
+		public Criteria and@{MFIELDNAME}NotEqualTo(@{DATETYPE} value) {
+			addCriterion("@{TABLEFIELDNAME} <>", value, "@{FIELDNAME}");
+			return (Criteria) this;
+		}
+		
+		public Criteria and@{MFIELDNAME}GreaterThan(@{DATETYPE} value) {
+			addCriterion("@{TABLEFIELDNAME} >", value, "@{FIELDNAME}");
+			return (Criteria) this;
+		}
+		
+		public Criteria and@{MFIELDNAME}GreaterThanOrEqualTo(@{DATETYPE} value) {
+			addCriterion("@{TABLEFIELDNAME} >=", value, "@{FIELDNAME}");
+			return (Criteria) this;
+		}
+		
+		public Criteria and@{MFIELDNAME}LessThan(@{DATETYPE} value) {
+			addCriterion("@{TABLEFIELDNAME} <", value, "@{FIELDNAME}");
+			return (Criteria) this;
+		}
+		
+		public Criteria and@{MFIELDNAME}LessThanOrEqualTo(@{DATETYPE} value) {
+			addCriterion("@{TABLEFIELDNAME} <=", value, "@{FIELDNAME}");
+			return (Criteria) this;
+		}
+		
+		public Criteria and@{MFIELDNAME}In(List<@{DATETYPE}> values) {
+			addCriterion("@{TABLEFIELDNAME} in", values, "@{FIELDNAME}");
+			return (Criteria) this;
+		}
+		
+		public Criteria and@{MFIELDNAME}NotIn(List<@{DATETYPE}> values) {
+			addCriterion("@{TABLEFIELDNAME} not in", values, "@{FIELDNAME}");
+			return (Criteria) this;
+		}
+		
+		public Criteria and@{MFIELDNAME}Between(@{DATETYPE} value1, @{DATETYPE} value2) {
+			addCriterion("@{TABLEFIELDNAME} between", value1, value2, "@{FIELDNAME}");
+			return (Criteria) this;
+		}
+		
+		public Criteria and@{MFIELDNAME}NotBetween(@{DATETYPE} value1, @{DATETYPE} value2) {
+			addCriterion("@{TABLEFIELDNAME} not between", value1, value2, "@{FIELDNAME}");
+			return (Criteria) this;
+		}

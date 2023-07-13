@@ -1,0 +1,27 @@
+package @{PACKAGENAME};
+
+import java.util.List;
+
+import @{PACKAGENAME}.@{ENTITYNAME}Example.Criteria;
+
+import start.magic.persistence.source.jdbc.criteria.Example;
+import start.magic.persistence.source.jdbc.criteria.GeneratedCriteria;
+
+/**
+ * 
+ * 警告:以下为自动生成的模版文件请误进行修改
+ *
+ */
+public class @{ENTITYNAME}Example extends Example<Criteria> {
+
+	@Override
+	protected Criteria createCriteriaInternal() {
+		return new Criteria();
+	}
+
+	public static class Criteria extends GeneratedCriteria {
+
+@{CONTEXT}
+	}
+
+}

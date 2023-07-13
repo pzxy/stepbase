@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.base.common.configure.OrmConfiguration,\
+com.base.common.configure.RedisClientConfiguration

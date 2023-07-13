@@ -1,0 +1,15 @@
+package @{COMPANYNAME}.@{PACKAGENAME}.dao;
+
+import org.springframework.stereotype.Repository;
+
+import com.base.core.framework.mongo.dao.MongoDao;
+import @{COMPANYNAME}.@{PACKAGENAME}.entity.@{ENTITYNAME};
+
+/**
+ * @author @{AUTHOR} 
+ * @date @{DATE}
+ */
+@Repository
+public interface @{ENTITYNAME}Dao extends MongoDao<@{ENTITYNAME}, Long> {
+	
+}

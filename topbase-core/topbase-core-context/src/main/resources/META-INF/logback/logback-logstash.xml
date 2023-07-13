@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+	
+	<springProperty name="LOGSTASH_URI" source="log.stash.uri"/>
+    
+	<appender name="LOGSTASH"
+		class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+		<destination>${LOGSTASH_URI}</destination>
+		<encoder charset="UTF-8" class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+			<providers>
+				<timestamp>
+					<timeZone>UTC</timeZone>
+				</timestamp>
+				<pattern>
+					<pattern>
+						{
+						"userId":"%X{mdc-userId:-}",
+						"requestId":"%X{mdc-requestId:-}",
+						"uri":"%X{mdc-uri:-}",
+						"method":"%X{mdc-method:-}",
+						"requestIp":"%X{mdc-requestIp:-}",
+						"localIp":"%X{mdc-localIp:-}",
+						"workerId":"%X{mdc-workerId:-}",
+						"dataCenterId":"%X{mdc-dataCenterId:-}",
+						"exception":"%X{mdc-exception:-}",
+						"code":"%X{mdc-code:-}",
+						"active": "${LOG_ACTIVE}",
+						"name":"${LOG_APPNAME}",
+						"@version":"${LOG_VERSION}",
+						"thread": "%thread",
+						"logger": "%logger{50}",
+						"level": "%level",
+						"message": "%msg"
+						}
+					</pattern>
+				</pattern>
+			</providers>
+		</encoder>
+		<keepAliveDuration>5 minutes</keepAliveDuration>
+	</appender>
+
+	
+</included>

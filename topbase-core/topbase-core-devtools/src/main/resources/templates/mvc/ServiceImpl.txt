@@ -1,0 +1,33 @@
+package @{COMPANYNAME}.@{PACKAGENAME}.service.impl;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+import com.base.core.framework.sql.service.impl.@{DAOTYPE}BaseServiceStreamImplV1Ext;
+import @{COMPANYNAME}.@{PACKAGENAME}.dao.@{ENTITYNAME}Dao;
+import @{COMPANYNAME}.@{PACKAGENAME}.entity.@{ENTITYNAME}DO;
+import @{COMPANYNAME}.@{PACKAGENAME}.service.@{ENTITYNAME}Service;
+
+import @{COMPANYNAME}.@{PACKAGENAME}.controller.@{SIMPLEENTITYNAME}.@{ENTITYNAME}VO;
+
+
+
+
+
+/**
+ * @author @{AUTHOR} 
+ * @date @{DATE}
+ */
+@Service("@{SIMPLEENTITYNAME}Service")
+public class @{ENTITYNAME}ServiceImpl extends @{DAOTYPE}BaseServiceStreamImplV1Ext<@{ENTITYNAME}DO,@{ENTITYNAME}VO> 
+implements @{ENTITYNAME}Service {
+
+	@SuppressWarnings("unused")
+	private final @{ENTITYNAME}Dao @{SIMPLEENTITYNAME}Dao;
+	
+	public @{ENTITYNAME}ServiceImpl(@Qualifier("@{SIMPLEENTITYNAME}Dao")@{ENTITYNAME}Dao @{SIMPLEENTITYNAME}Dao) {
+		super(@{SIMPLEENTITYNAME}Dao,@{ENTITYNAME}VO.class);
+		this.@{SIMPLEENTITYNAME}Dao=@{SIMPLEENTITYNAME}Dao;
+	}
+
+}

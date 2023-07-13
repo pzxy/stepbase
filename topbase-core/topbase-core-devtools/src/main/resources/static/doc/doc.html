@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>API Standard</title>
+<link rel="stylesheet" href="/static/doc/css/style.css">
+<link rel="stylesheet" href="/static/doc/css/prettify.css">
+<link rel="stylesheet" href="/static/doc/css/page.css" />
+</head>
+
+<body>
+	<nav>
+		<div class="container">
+			<h1>API Standard</h1>
+			<div id="menu">
+				<ul class="toplinks">
+					<li><a href="/static/doc/index.html">Home</a></li>
+					<li><a href="/swagger-ui/index.html" target="_blank">Swagger</a></li>
+					<li><a href="/static/doc/response_code.html" target="_blank">Response Code</a></li>
+					<li><a href="/static/doc/data_dictionary.html" target="_blank">Data Dictionary</a></li>
+					<li><a href="/static/doc/test_tools.html" target="_blank">Sign</a></li>
+					<li><a href="/static/doc/java_coding_guidelines.pdf"
+						target="_blank">Coding Guidelines</a></li>
+				</ul>
+			</div>
+			<a id="menu-toggle" href="#">&#9776;</a>
+		</div>
+	</nav>
+	<header>
+		<div class="container">
+			<h2 class="docs-header"></h2>
+		</div>
+	</header>
+	<section>
+		<div class="container">
+			<ul class="docs-nav" id="menu-left">
+				<li><strong>Introduction</strong></li>
+				<li><a href="#start_encode">Encoding</a></li>
+				<li><a href="#request_parameter">Header、Query</a></li>
+				<li><a href="#sign">HMAC-SHA1</a></li>
+				<li class="separator"></li>
+				<li><strong>GET</strong></li>
+				<li><a href="#get_sign">Signature</a></li>
+				<li class="separator"></li>
+				<li><strong>POST、PUT、DELETE</strong></li>
+				<li><a href="#post_body">Request Body</a></li>
+				<li><a href="#post_sign">Signature</a></li>
+				<li class="separator"></li>
+				<li><strong>Appendix</strong></li>
+				<li><a href="#appendix_accessid_accesskey">accessId、accessKey</a>
+				</li>
+			</ul>
+			<div class="docs-content">
+				<h2>Introduction</h2>
+				<h3 id="start_encode">Encoding</h3>
+				<p>
+					<a href="/swagger-ui/index.html" target="_blank">API Document</a>中，在需要指定编码方式而没有特别说明的地方一律采用UTF-8编码
+				</p>
+				<h3 id="request_parameter">Header、Query</h3>
+				<ul>
+					<li>Header为请求头参数、Query为请求Url参数</li>
+					<li>若请求参数为非必填项，则可不传递（详见 <a href="/swagger-ui/index.html"
+						target="_blank">API Document</a>）
+					</li>
+					<li>参数传递顺序不作要求</li>
+					<li>参数名必须与文档保持一致区分大小写，参数名、参数值前后不要有空格，否则签名校验可能会通不过</li>
+					<li>为防止乱码参数值需进行URL编码(<b>编码后注意转成大写形式%E%2B,像%e%2b小写形式签名无法通过</b>)<br/>Java Sample code:<pre class="prettyprint">URLEncoder.encode(value,"UTF-8")</pre>
+					</li>
+				</ul>
+				<h3 id="sign">HMAC-SHA1</h3>
+				<p>对请求数据进行HMAC-SHA1，用于访问控制和校验数据的完整性</p>
+				<p>Java Sample code 引入(commons-codec-1.10.jar)</p>
+				<pre class="prettyprint">new String(Base64.encodeBase64(HmacUtils.hmacSha1(accesskey, data.getBytes())));</pre>
+				<p>Swift Sample code</p>
+				<pre class="prettyprint">import CommonCrypto
+extension String {
+    func hmacsha1(accesskey: String) -> String {
+        let cKey = accesskey.cString(using: String.Encoding.utf8)
+        let cData = self.cString(using: String.Encoding.utf8)
+        var result = [CUnsignedChar](repeating: 0, count: Int(CC_SHA1_DIGEST_LENGTH))
+        CCHmac(kCCHmacAlgSHA1, cKey!, strlen(cKey!), cData!, strlen(cData!), &result)
+        let hmacData:NSData = NSData(bytes: result, length: (Int(CC_SHA1_DIGEST_LENGTH)))
+        let hmacBase64 = hmacData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength76Characters)
+        return String(hmacBase64)
+    }
+}</pre>
+				<p>JavaScript Sample code</p>
+				<pre class="prettyprint">import hmacSHA1 from 'crypto-js/hmac-sha1';
+import Latin1 from 'crypto-js/enc-latin1';
+import { Base64 } from 'js-base64';
+const signature = (val: string, accesskey: string, salt?: string) => {
+  const hma = hmacSHA1(val, accesskey);
+  return Base64.btoa(hma.toString(Latin1));
+};</pre>
+				<p>pythone Sample code</p>
+				<pre class="prettyprint">import base64
+import hmacfrom hashlib 
+import sha1from urllib.parse 
+import quotedef 
+hmacsha1(data: str, accesskey: str) -> str:
+	key = bytearray(accesskey, 'utf-8')
+	sdata = base64.b64encode(bytearray(data, 'utf-8'))
+	sig = hmac.new(key, sdata, sha1).digest()
+	return quote(base64.b64encode(sig).decode(), 'utf-8')</pre>
+				<p>Go Sample code</p>
+				<pre class="prettyprint">import (
+  "crypto/hmac"
+  "crypto/sha1"
+  "encoding/base64"
+)
+func Hmacsha1(data string,accesskey string) (string) {
+	key := []byte(accesskey)
+	sdata := []byte(data)
+	mac := hmac.New(sha1.New, key)
+	mac.Write([]byte(sdata))
+	sig := base64.StdEncoding.EncodeToString(mac.Sum(nil))
+	return sig
+}</pre>
+				<p>C# Sample code</p>
+				<pre class="prettyprint">using System.Security.Cryptography;
+public static string HmacSHA1(string content, string accessKey)
+{
+	HMACSHA1 myHMACSHA1 = new HMACSHA1(Encoding.UTF8.GetBytes(accessKey));
+	byte[] byteText = myHMACSHA1.ComputeHash(Encoding.UTF8.GetBytes(content));
+	return System.Convert.ToBase64String(byteText);
+}</pre>
+				HMAC-SHA1签名方法定义于RFC2104(http://www.ietf.org/rfc/rfc2104.txt)<br/>
+				accesskey为签名密钥,签名数据请参考各请求方式对应的Signature部分
+				<hr>
+				<h2>GET</h2>
+				<h3 id="get_sign">Signature</h3>
+				<ul>
+					<li>请求参数需按<a href="#request_parameter">Header、Query</a>约定进行传递</li>
+					<li>对请求参数按字母排序从小到大键=值用&分隔值使用URL编码，示例：accessid=8412f654f8662d033111fc453edc5b63&name=%E4%B8%AD%E6%96%87<br/>
+					(accessid和name需要进行字母排序,name参数值进行url编码)<br/>
+					对以上数据进行 <a href="#sign">HMAC-SHA1</a>
+					</li>
+				</ul>
+				<hr>
+				<h2>POST、PUT、DELETE</h2>
+				<h3 id="post_body">Request Body</h3>
+				<ul>
+					<li>内容长度最大<span class="max-body-text-size"></span>字节
+					</li>
+					<li>数据应包含在请求主体body中</li>
+					<li>主体数据为JSON时需设置请求内容类型application/json</li>
+					<li>主体数据过大时可设置请求内容类型application/gzip,并对主体数据进行gzip处理</li>
+					<li>对主体数据进行Base64编码再签名</li>
+				</ul>
+				<pre class="prettyprint">Base64.encodeBase64({"参数名称(详见<a
+						href="/swagger-ui/index.html" target="_blank">API Document</a>)":"参数值"...... })</pre>
+				<h3 id="post_sign">Signature</h3>
+				<ul>
+					<li>对Body数据进行Base64编码后进行 <a href="#sign">HMAC-SHA1</a>
+					</li>
+				</ul>
+				<hr>
+				<h2>Appendix</h2>
+				<h3 id="appendix_accessid_accesskey">accessId、accessKey</h3>
+				<p>Test [accessId、accessKey]</p>
+				<div class="doc-table-wrapper"></div>
+				<p>Pro [accessId、accessKey]:Please contact the developer</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="vibrant centered">
+		<div class="container">
+			<h2 class="docs-footer"></h2>
+		</div>
+	</section>
+
+	<footer>
+		<div class="container">
+			<p>Copyright © 2020 Telos Foundation All rights reserved</p>
+		</div>
+	</footer>
+</body>
+<script type="text/javascript" src="/static/doc/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/static/doc/js/clipboard.js"></script>
+<script type="text/javascript" src="/static/doc/js/index.js"
+	charset="utf-8"></script>
+<script language="javascript">
+	module1.docFun();
+</script>
+
+</html>

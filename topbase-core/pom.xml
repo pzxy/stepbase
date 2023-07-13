@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>org.topnetwork</groupId>
+		<artifactId>topbase</artifactId>
+		<version>2.8.32.TOP</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>topbase-core</artifactId>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>topbase-core-head</module>
+		<module>topbase-core-context</module>
+		<module>topbase-core-mvc</module>
+		<module>topbase-core-common</module>
+		<module>topbase-core-aop</module>
+		<module>topbase-core-devtools</module>
+		<module>topbase-core-framework</module>
+	</modules>
+
+</project>

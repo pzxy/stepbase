@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+
+	<logger name="com.gitee.magic.jdbc.spring" level="ERROR" />
+	<logger name="org.springframework" level="ERROR" />
+	<logger name="org.mongodb.driver" level="ERROR" />
+	<logger name="com.xxl" level="ERROR" />
+	<logger name="org.apache" level="ERROR" />
+	<logger name="com.netflix" level="ERROR" />
+	<logger name="com.ulisesbocchio" level="ERROR" />
+	<logger name="com.gitee.magic.framework.base.rest.HttpWrapper" level="ERROR" />
+	
+	<springProperty name="LOG_APPNAME" source="spring.application.name"/>
+	<springProperty name="LOG_ACTIVE" source="spring.profiles.active"/>
+	<springProperty name="LOG_VERSION" source="magic.system.version"/>
+	<property name="LOG_NAME" value="${LOG_APPNAME}_${LOG_ACTIVE}_${LOG_VERSION}"/>
+	
+	<!-- 请求Id -->
+	<conversionRule conversionWord="requestId" converterClass="com.base.core.mvc.web.LogRequestIdConfig" />
+	<!-- 格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+    <property name="LOG.PATTERN" value="[%d{HH:mm:ss}][%logger{50}-%line][%level]-[%requestId]-> %msg%n"/>
+	
+	<!-- 控制台 -->
+	<appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder
+			class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>${LOG.PATTERN}</pattern>
+		</encoder>
+	</appender>
+
+</included>

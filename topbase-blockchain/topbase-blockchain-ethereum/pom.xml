@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>org.topnetwork</groupId>
+		<artifactId>topbase-blockchain</artifactId>
+		<version>2.8.32.TOP</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>topbase-blockchain-ethereum</artifactId>
+	<packaging>jar</packaging>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.topnetwork</groupId>
+			<artifactId>topbase-blockchain-wallet</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.web3j</groupId>
+			<artifactId>core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.web3j</groupId>
+			<artifactId>codegen</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+</project>

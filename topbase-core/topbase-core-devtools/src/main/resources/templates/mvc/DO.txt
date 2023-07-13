@@ -1,0 +1,25 @@
+package @{COMPANYNAME}.@{PACKAGENAME}.entity;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import com.base.core.framework.sql.entity.BaseV1Ext;
+import com.gitee.magic.jdbc.persistence.annotation.Entity;
+import com.gitee.magic.jdbc.persistence.annotation.Table;
+import com.gitee.magic.jdbc.persistence.source.jdbc.script.annotations.TableDef;
+
+/**
+ * @author @{AUTHOR} 
+ * @date @{DATE}
+ */
+@Getter@Setter@ToString
+@Entity("@{SIMPLEENTITYNAME}")
+@Table("@{TABEXTESION}_@{UENTITYNAME}")
+@TableDef(comment = "TODO:请重命名表名称")
+public class @{ENTITYNAME}DO extends BaseV1Ext {
+
+	private static final long serialVersionUID = 1L;
+	
+	public @{ENTITYNAME}DO(){}
+
+}

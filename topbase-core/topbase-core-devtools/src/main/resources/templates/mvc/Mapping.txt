@@ -1,0 +1,59 @@
+package @{COMPANYNAME}.@{PACKAGENAME}.controller.@{SIMPLEENTITYNAME};
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.gitee.magic.framework.head.vo.ObjectVO;
+import com.gitee.magic.framework.head.vo.PageVO;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+/**
+ * @author @{AUTHOR} 
+ * @date @{DATE}
+ */
+@Tag(name = "TODO:请重命名接口文档名称")
+public interface @{ENTITYNAME}Mapping {
+	
+	/**
+	 * 保存更新
+	 * @param ao
+	 * @return
+	 */
+	@Operation(summary = "保存更新")
+	@PostMapping("/v1/@{SIMPLEENTITYNAME}")
+	ObjectVO<Long> save(@RequestBody @{ENTITYNAME}AO ao);
+	
+	/**
+	 * 更新数据
+	 * @param ao
+	 * @return
+	 */
+	@Operation(summary = "更新数据")
+	@PutMapping("/v1/@{SIMPLEENTITYNAME}")
+	ObjectVO<Long> update(@RequestBody @{ENTITYNAME}UpdateAO ao);
+	
+	/**
+	 * 批量删除
+	 * @param ao
+	 * @return
+	 */
+	@Operation(summary = "批量删除")
+	@DeleteMapping("/v1/@{SIMPLEENTITYNAME}")
+	ObjectVO<Integer> remove(@RequestBody List<Long> ao);
+	
+	/**
+	 * 分页查询
+	 * @param ao
+	 * @return
+	 */
+	@Operation(summary = "分页查询")
+	@PostMapping("/v1/@{SIMPLEENTITYNAME}/page")
+	PageVO<@{ENTITYNAME}VO> page(@RequestBody @{ENTITYNAME}PageAO ao);
+	
+}

@@ -1,0 +1,14 @@
+package @{COMPANYNAME}.@{PACKAGENAME}.service;
+
+import com.base.core.framework.sql.service.@{DAOTYPE}BaseServiceStreamV1Ext;
+import @{COMPANYNAME}.@{PACKAGENAME}.entity.@{ENTITYNAME}DO;
+
+import @{COMPANYNAME}.@{PACKAGENAME}.controller.@{SIMPLEENTITYNAME}.@{ENTITYNAME}VO;
+
+/**
+ * @author @{AUTHOR} 
+ * @date @{DATE}
+ */
+public interface @{ENTITYNAME}Service extends @{DAOTYPE}BaseServiceStreamV1Ext<@{ENTITYNAME}DO,@{ENTITYNAME}VO> {
+
+}

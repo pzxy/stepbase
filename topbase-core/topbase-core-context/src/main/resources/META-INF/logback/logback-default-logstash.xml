@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+
+	<include resource="META-INF/logback/logback-base.xml"/>
+	<include resource="META-INF/logback/logback-file.xml"/>
+	<include resource="META-INF/logback/logback-logstash.xml"/>
+	
+	<springProfile name="dev">
+		<root level="INFO">
+			<appender-ref ref="STDOUT" />
+		</root>
+	</springProfile>
+
+	<springProfile name="test">
+		<root level="INFO">
+			<appender-ref ref="STDOUT" />
+			<appender-ref ref="FILE" />
+			<appender-ref ref="FILE_ERROR" />
+		</root>
+	</springProfile>
+
+	<springProfile name="uat">
+		<root level="INFO">
+			<appender-ref ref="FILE" />
+			<appender-ref ref="FILE_ERROR" />
+			<appender-ref ref="LOGSTASH" />
+		</root>
+	</springProfile>
+
+	<springProfile name="pro">
+		<root level="INFO">
+			<appender-ref ref="FILE" />
+			<appender-ref ref="FILE_ERROR" />
+			<appender-ref ref="LOGSTASH" />
+		</root>
+	</springProfile>
+	
+</included>

@@ -1,0 +1,26 @@
+package @{COMPANYNAME}.@{PACKAGENAME}.service.impl;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+import com.base.core.framework.mongo.service.impl.MongoBaseServiceImpl;
+import @{COMPANYNAME}.@{PACKAGENAME}.dao.@{ENTITYNAME}Dao;
+import @{COMPANYNAME}.@{PACKAGENAME}.entity.@{ENTITYNAME};
+import @{COMPANYNAME}.@{PACKAGENAME}.service.@{ENTITYNAME}Service;
+
+/**
+ * @author @{AUTHOR} 
+ * @date @{DATE}
+ */
+@Service("@{SIMPLEENTITYNAME}Service")
+public class @{ENTITYNAME}ServiceImpl extends MongoBaseServiceImpl<@{ENTITYNAME}, Long> implements @{ENTITYNAME}Service {
+
+	@SuppressWarnings("unused")
+	private final @{ENTITYNAME}Dao @{SIMPLEENTITYNAME}Dao;
+
+	public @{ENTITYNAME}ServiceImpl(@Qualifier("@{SIMPLEENTITYNAME}Dao")@{ENTITYNAME}Dao @{SIMPLEENTITYNAME}Dao) {
+		super(@{SIMPLEENTITYNAME}Dao);
+		this.@{SIMPLEENTITYNAME}Dao = @{SIMPLEENTITYNAME}Dao;
+	}
+	
+}

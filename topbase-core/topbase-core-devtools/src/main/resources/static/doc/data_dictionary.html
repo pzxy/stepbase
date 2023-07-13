@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>数据字典</title>
+		<link rel="stylesheet" type="text/css" href="/static/doc/css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="/static/doc/css/page.css"/>
+		<style>
+		    pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+		    .string { color: green; }
+		    .number { color: darkorange; }
+		    .boolean { color: blue; }
+		    .null { color: magenta; }
+		    .key { color: red; }
+		</style>
+	</head>
+
+	<body>
+		<div class="select-top">
+			数据字典,格式:(字段名_值)
+		</div>
+		<div class="default-box"></div>
+		<div class="fix-thead-wrapper">
+			<div class="first">序号</div>
+			<div class="second">字典码</div>
+			<div class="third">数据结构{"编号":"值"}</div>
+		</div>
+		<div class="table-wrapper">
+			<table class="code-table" border="1" width="100%"></table>
+		</div>
+	</body>
+	<script src="/static/doc/js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/doc/js/index.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">module1.dataDictionaryFun();</script>
+</html>

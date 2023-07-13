@@ -1,0 +1,9 @@
+<mapper>
+
+    <sql id="common_limit">
+    	<if condition="pageSize!=-1">
+			LIMIT #{pageIndex},#{pageSize}
+		</if>
+    </sql>
+
+</mapper>

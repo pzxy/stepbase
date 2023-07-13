@@ -1,0 +1,12 @@
+package @{COMPANYNAME}.@{PACKAGENAME}.service;
+
+import com.base.core.framework.mongo.service.MongoBaseService;
+import @{COMPANYNAME}.@{PACKAGENAME}.entity.@{ENTITYNAME};
+
+/**
+ * @author @{AUTHOR} 
+ * @date @{DATE}
+ */
+public interface @{ENTITYNAME}Service extends MongoBaseService<@{ENTITYNAME}, Long> {
+	
+}

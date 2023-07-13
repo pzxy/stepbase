@@ -1,0 +1,36 @@
+<mapper>
+
+    <sql id="LIST_AUTH_ROLEIDS">
+        SELECT
+			sa.id AS authId,
+			sa.name AS name,
+			sa.parentId as parentId,
+			sa.action AS action,
+			sa.uri AS uri,
+			sa.method AS method,
+			sa.value AS value,
+			sa.sort as sort
+		FROM
+			sys_role_auth_relation srar
+		INNER JOIN sys_auth sa ON sa.id = srar.authId
+		<where>
+			<if condition="parentId!=null">
+				AND sa.parentId=#{parentId}
+			</if>
+			<if condition="action!=null">
+				AND sa.action=#{action}
+			</if>
+			<if condition="uri!=null">
+				AND sa.uri=#{uri}
+			</if>
+			<if condition="method!=null">
+				AND sa.method=#{method}
+			</if>
+	        <foreach collection="roleIds" item="roleId" open=" and srar.roleId in (" separator="," close=")">
+				#{roleId}
+			</foreach>
+		</where>
+		order by sa.sort asc
+    </sql>
+
+</mapper>

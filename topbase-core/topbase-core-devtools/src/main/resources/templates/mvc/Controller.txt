@@ -1,0 +1,49 @@
+package @{COMPANYNAME}.@{PACKAGENAME}.controller.@{SIMPLEENTITYNAME};
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.base.core.context.annotation.RestfulCheck;
+import com.base.core.context.mvc.BaseV1Controller;
+import @{COMPANYNAME}.@{PACKAGENAME}.service.@{ENTITYNAME}Service;
+import com.gitee.magic.framework.head.vo.ObjectVO;
+import com.gitee.magic.framework.head.vo.PageVO;
+
+/**
+ * @author @{AUTHOR} 
+ * @date @{DATE}
+ */
+@RestController
+public class @{ENTITYNAME}Controller extends BaseV1Controller implements @{ENTITYNAME}Mapping {
+
+	@Autowired
+	private @{ENTITYNAME}Service @{SIMPLEENTITYNAME}Service;
+	
+	@RestfulCheck
+	@Override
+	public ObjectVO<Long> save(@{ENTITYNAME}AO ao) {
+		return response(@{SIMPLEENTITYNAME}Service.saveForUpdate(ao.getId(), ao));
+	}
+
+	@RestfulCheck
+	@Override
+	public ObjectVO<Long> update(@{ENTITYNAME}UpdateAO ao) {
+		return response(@{SIMPLEENTITYNAME}Service.saveForUpdate(ao.getId(), ao));
+	}
+	
+	@RestfulCheck
+	@Override
+	public ObjectVO<Integer> remove(List<Long> ao) {
+		return response(@{SIMPLEENTITYNAME}Service.remove(ao));
+	}
+	
+	@RestfulCheck
+	@Override
+	public PageVO<@{ENTITYNAME}VO> page(@{ENTITYNAME}PageAO ao) {
+		return response(@{SIMPLEENTITYNAME}Service.page(ao));
+	}
+	
+}

@@ -1,0 +1,63 @@
+package @{COMPANYNAME}.@{PACKAGENAME}.controller.@{SIMPLEENTITYNAME};
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.base.core.context.annotation.RestfulCheck;
+import com.base.core.context.mvc.BaseV1Controller;
+import @{COMPANYNAME}.@{PACKAGENAME}.service.@{ENTITYNAME}Service;
+
+import com.gitee.magic.framework.head.vo.ObjectVO;
+import com.gitee.magic.framework.head.vo.PageVO;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+/**
+ * @author @{AUTHOR} 
+ * @date @{DATE}
+ */
+@RestController
+@RequestMapping("/v1/@{SIMPLEENTITYNAME}")
+@Tag(name = "TODO:请重命名接口文档名称")
+public class @{ENTITYNAME}Controller extends BaseV1Controller {
+
+	@Autowired
+	private @{ENTITYNAME}Service @{SIMPLEENTITYNAME}Service;
+	
+	@RestfulCheck
+	@Operation(summary = "保存更新")
+	@PostMapping
+	public ObjectVO<Long> save(@RequestBody @{ENTITYNAME}AO ao) {
+		return response(@{SIMPLEENTITYNAME}Service.saveForUpdate(ao.getId(), ao));
+	}
+	
+	@RestfulCheck
+	@Operation(summary = "更新数据")
+	@PutMapping
+	public ObjectVO<Long> update(@RequestBody @{ENTITYNAME}UpdateAO ao) {
+		return response(@{SIMPLEENTITYNAME}Service.saveForUpdate(ao.getId(), ao));
+	}
+	
+	@RestfulCheck
+	@Operation(summary = "批量删除")
+	@DeleteMapping
+	public ObjectVO<Integer> remove(@RequestBody List<Long> ao) {
+		return response(@{SIMPLEENTITYNAME}Service.remove(ao));
+	}
+	
+	@RestfulCheck
+	@Operation(summary = "分页查询")
+	@PostMapping("/page")
+	public PageVO<@{ENTITYNAME}VO> page(@RequestBody @{ENTITYNAME}PageAO ao) {
+		return response(@{SIMPLEENTITYNAME}Service.page(ao));
+	}
+	
+}

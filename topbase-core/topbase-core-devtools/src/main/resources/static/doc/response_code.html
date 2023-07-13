@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>状态码</title>
+		<link rel="stylesheet" type="text/css" href="/static/doc/css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="/static/doc/css/page.css"/>
+	</head>
+
+	<body>
+		<div class="select-top">
+			
+			<select id="select">
+				<option value="cn">中文</option>
+				<option value="en">English</option>
+			</select> &nbsp;<font style="color:red">注:状态码为程序执行的一种状态不建议直接显示,如需显示建议显示>=10000状态码</font>
+		</div>
+		<div class="default-box"></div>
+		<div class="fix-thead-wrapper">
+			<div class="first">序号</div>
+			<div class="second">状态码</div>
+			<div class="third">信息</div>
+		</div>
+		<div class="table-wrapper">
+			<table class="code-table" border="1" width="100%"></table>
+		</div>
+	</body>
+	<script src="/static/doc/js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/doc/js/index.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">module1.reponseCodeFun();</script>
+</html>

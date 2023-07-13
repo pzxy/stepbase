@@ -1,0 +1,20 @@
+package @{COMPANYNAME}.@{PACKAGENAME}.dao.impl;
+
+import org.springframework.stereotype.Repository;
+import com.base.core.framework.sql.dao.impl.@{DAOTYPE}BaseDaoImplV1Ext;
+
+import @{COMPANYNAME}.@{PACKAGENAME}.dao.@{ENTITYNAME}Dao;
+import @{COMPANYNAME}.@{PACKAGENAME}.entity.@{ENTITYNAME}DO;
+
+/**
+ * @author @{AUTHOR} 
+ * @date @{DATE}
+ */
+@Repository("@{SIMPLEENTITYNAME}Dao")
+public class @{ENTITYNAME}DaoImpl extends @{DAOTYPE}BaseDaoImplV1Ext<@{ENTITYNAME}DO,Long>implements @{ENTITYNAME}Dao {
+
+	public @{ENTITYNAME}DaoImpl() {
+		super(@{ENTITYNAME}DO.class);
+	}
+
+}

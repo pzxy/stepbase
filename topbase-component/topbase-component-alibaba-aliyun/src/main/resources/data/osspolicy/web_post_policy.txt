@@ -1,0 +1,6 @@
+{
+	"expiration": "2120-01-01T12:00:00.000Z",
+	"conditions": [
+		["content-length-range", 0, 104857600]
+	]
+}

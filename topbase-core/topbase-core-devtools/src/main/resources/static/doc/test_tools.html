@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>测试工具</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="/static/doc/css/page.css" />
+	</head>
+
+	<body>
+		<div class="form-wrapper">
+			<form onsubmit="return false" action="##" method="post">
+				<table class="tool-table" border="1" width="100%">
+					<tr>
+						<td width="30%" align="right">accesskey</td>
+						<td width="60%"><input name="accessKey" id="accessKey" value="" class="inputstyle" placeholder="请输入访问密钥" /></td>
+						<td width="10%" align="center">不能传递</td>
+					</tr>
+					<tr>
+						<td width="30%" align="right">处理内容</td>
+						<td width="60%"><textarea rows="10" cols="60" name="requestContent" id="requestContent" class="inputstyle" placeholder="请输入处理内容"></textarea></td>
+						<td width="10%" align="center">query、body</td>
+					</tr>
+					<tr>
+						<td width="30%" align="right">处理内容-数据签名(原始编码)</td>
+						<td width="60%"><input class="copy-btn" id="copysignaturem" type="button" value="复制" /><span class="copy-content copysignaturem"></span></td>
+						<td width="10%" align="center">query</td>
+					</tr>
+					<tr>
+						<td width="30%" align="right">处理内容-数据签名(URL编码)</td>
+						<td width="60%"><input class="copy-btn" id="copysignatureb" type="button" value="复制" /><span class="copy-content copysignatureb"></span></td>
+						<td width="10%" align="center">header</td>
+					</tr>
+					<tr>
+						<td width="30%" align="right">处理内容Base64</td>
+						<td width="60%"><input class="copy-btn" id="copyrequestContentEncode" type="button" value="复制" /><span class="copy-content copyrequestContentEncode"></span></td>
+						<td width="10%" align="center">body</td>
+					</tr>
+					<tr>
+						<td width="30%" align="right">处理内容Base64-数据签名(原始编码)</td>
+						<td width="60%"><input class="copy-btn" id="copysignaturemm" type="button" value="复制" /><span class="copy-content copysignaturemm"></span></td>
+						<td width="10%" align="center">query</td>
+					</tr>
+					<tr>
+						<td width="30%" align="right">处理内容Base64-数据签名(URL编码)</td>
+						<td width="60%"><input class="copy-btn" id="copysignature" type="button" value="复制" /><span class="copy-content copysignature"></span></td>
+						<td width="10%" align="center">header</td>
+					</tr>
+					<tr>
+						<td colspan="3" align="center"><input id="submit-btn" type="button" value="数据生成" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</body>
+	<script type="text/javascript" src="/static/doc/js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="/static/doc/js/clipboard.js"></script>
+	<script type="text/javascript" src="/static/doc/js/index.js" charset="utf-8"></script>
+	<script language="javascript">module1.testToolFun();</script>
+
+</html>

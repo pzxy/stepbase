@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+
+	<logger name="start.framework.commons.rest.HttpWrapper" level="DEBUG"/>
+	
+	<!-- 控制台 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder
+			class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>[%d{HH:mm:ss}][%logger{50}]-[%level]-> %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- 日志输出级别 -->
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+	</root>
+	
+</configuration>

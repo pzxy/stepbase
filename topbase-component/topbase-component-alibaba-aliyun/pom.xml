@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>org.topnetwork</groupId>
+		<artifactId>topbase-component</artifactId>
+		<version>2.8.32.TOP</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>topbase-component-alibaba-aliyun</artifactId>
+	<packaging>jar</packaging>
+	
+	<properties>
+		<aliyun-sdk-oss.version>3.16.0</aliyun-sdk-oss.version>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.topnetwork</groupId>
+			<artifactId>topbase-core-context</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.topnetwork</groupId>
+			<artifactId>topbase-component-upload</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.aliyun.oss</groupId>
+			<artifactId>aliyun-sdk-oss</artifactId>
+			<version>${aliyun-sdk-oss.version}</version>
+		</dependency>
+
+	</dependencies>
+
+</project>

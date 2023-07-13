@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.base.core.mvc.configure.BootConfigurable,\
+com.base.core.mvc.configure.SnowflakeIdConfiguration
